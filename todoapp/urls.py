@@ -16,6 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from django.http import HttpResponse
+
+
+from todoapp.home import views as home_views
+from todoapp.users import views as user_views
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r"^$", home_views.welcome, name="home"),
+    url(r"^login/$", user_views.login, name="login"),
+    url(r"^admin/", admin.site.urls),
 ]
